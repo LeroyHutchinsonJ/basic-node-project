@@ -68,6 +68,14 @@ router.put('/:id', (req, res) =>{
     }
     else{
         const upMember = req.body;
+        members.forEach(member =>{
+            if(member.id === parseInt(req.params.id))
+            {
+                //Update the name and the body, if they were changed
+                member.name = req.body.name ? req.body.name:member.name;
+                member.email = req.body.email ? req.body.email: member.email;
+            }
+        })
     }
 
 })
