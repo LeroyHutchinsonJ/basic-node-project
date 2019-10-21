@@ -67,15 +67,30 @@ router.put('/:id', (req, res) =>{
         res.status(400).json("There is no member with that Id here!");
     }
     else{
-        const upMember = req.body;
+        //For each member in the members array
         members.forEach(member =>{
+            //Check if the Id are the same
             if(member.id === parseInt(req.params.id))
             {
                 //Update the name and the body, if they were changed
                 member.name = req.body.name ? req.body.name:member.name;
                 member.email = req.body.email ? req.body.email: member.email;
+
+                res.json({msg: 'Member was updated', member});
             }
         })
+    }
+
+})
+
+router.delete('/:id', (req,res) =>{
+
+    if(req.params.id == false) {
+        res.json("You must put in the id of the user you wish to delete");
+    }
+    else{
+        //Loop through the array
+        members.forEach();
     }
 
 })
